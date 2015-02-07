@@ -39,31 +39,34 @@
 var importeddataset = d3.csv("sampledata/kanodata.csv", function(d) {
   return {
     featureid: +d.Featureid,
-    label: function(){
-        return "Feature " + featureid;
-    },
+    // label: function(){
+    //     return "Feature " + featureid;
+    // },
     description: d.Description,
     satisfaction: +d.Satisfaction,
     dissatisfaction: +d.Dissatisfaction
   };
 }, function(error, rows) {
   console.log(rows);
-    var chart = c3.generate({
-        data: {
-            json: rows,
-            keys: {
-                value: ['satisfaction', 'dissatisfaction']
-            },
-            type: 'bar',
-            order: 'desc'
-        },
-        grid: {
-            y: {
-                lines: [{value:0}]
-            }
-        },
-    });
-
+  var chart = c3.generate({
+      data: {
+          json: rows,
+          keys: {
+              value: ['satisfaction', 'dissatisfaction']
+          },
+          type: 'bar'
+      },
+      grid: {
+          y: {
+              lines: [{value:0}]
+          }
+      },
+      tooltip: {
+          format: {
+              title: function (d) { return 'Feature ' + rows[d].featureid + ": " + rows[d].description; },
+          }
+      }
+  });
 });
 
 
