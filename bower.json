@@ -7,5 +7,10 @@
     "c3": "~0.4.9",
     "sheetsee": "~1.0.0"
   },
+  "overrides": {
+    "c3": {
+      "main": ["c3.min.js", "c3.min.css"]
+    }
+  },
   "devDependencies": {}
 }
