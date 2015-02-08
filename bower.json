@@ -5,11 +5,15 @@
     "bootstrap": "~3.1.1",
     "jquery": "~1.11.1",
     "sheetsee": "~1.0.0",
-    "c3": "~0.4.9"
+    "c3": "~0.4.9",
+    "underscore": "~1.7.0"
   },
   "overrides": {
     "c3": {
-      "main": ["c3.min.js", "c3.min.css"]
+      "main": [
+        "c3.min.js",
+        "c3.min.css"
+      ]
     }
   },
   "devDependencies": {}

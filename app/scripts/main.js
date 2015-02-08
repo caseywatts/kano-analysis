@@ -42,6 +42,19 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 function myData(data) {
   console.log(data);
+
+  // Convert strings to numbers as appropriate
+  data = _.map(data, function(d){
+    d.Dissatisfaction = +d.Dissatisfaction;
+    d.Satisfaction = +d.Satisfaction;
+    return d;
+  });
+
+  // Sort by Dissatisfaction
+  data = _.sortBy( data, 'Dissatisfaction');
+  console.log(data);
+
+  // Draw the beautiful c3 chart
   var chart = c3.generate({
     data: {
         json: data,
@@ -61,6 +74,8 @@ function myData(data) {
         }
     }
   });
+
+  
 }
 
 
