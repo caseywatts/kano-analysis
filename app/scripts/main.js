@@ -36,10 +36,33 @@
 // ['feature-23', 0.27, -0.18],
 // ];
 
+
+function getQueryVariable(variable)
+{
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}
+
+
 document.addEventListener('DOMContentLoaded', function() {
-    var URL = "1THu-Vknk-UJX7UsDOjtsti_pDk6bnhyGS20Hjzxv46E"
-    Tabletop.init( { key: URL, callback: myData, simpleSheet: true } )
+  var public_sheet_id = getQueryVariable('public_sheet_id');
+  if (public_sheet_id){
+    var URL = public_sheet_id;
+    // get data from URL and then plot it with c3
+    Tabletop.init( { key: URL, callback: myData, simpleSheet: true } );
+  }
+  else {
+    alert("errorrrrr");
+  }
 })
+
+
+
 function myData(data) {
   console.log(data);
 
