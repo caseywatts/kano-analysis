@@ -36,38 +36,66 @@
 // ['feature-23', 0.27, -0.18],
 // ];
 
-var importeddataset = d3.csv("sampledata/kanodata.csv", function(d) {
-  return {
-    featureid: +d.Featureid,
-    // label: function(){
-    //     return "Feature " + featureid;
-    // },
-    description: d.Description,
-    satisfaction: +d.Satisfaction,
-    dissatisfaction: +d.Dissatisfaction
-  };
-}, function(error, rows) {
-  console.log(rows);
+document.addEventListener('DOMContentLoaded', function() {
+    var URL = "1THu-Vknk-UJX7UsDOjtsti_pDk6bnhyGS20Hjzxv46E"
+    Tabletop.init( { key: URL, callback: myData, simpleSheet: true } )
+})
+function myData(data) {
+  console.log(data);
   var chart = c3.generate({
-      data: {
-          json: rows,
-          keys: {
-              value: ['satisfaction', 'dissatisfaction']
-          },
-          type: 'bar'
-      },
-      grid: {
-          y: {
-              lines: [{value:0}]
-          }
-      },
-      tooltip: {
-          format: {
-              title: function (d) { return 'Feature ' + rows[d].featureid + ": " + rows[d].description; },
-          }
-      }
+    data: {
+        json: data,
+        keys: {
+            value: ['Satisfaction', 'Dissatisfaction']
+        },
+        type: 'bar'
+    },
+    grid: {
+        y: {
+            lines: [{value:0}]
+        }
+    },
+    tooltip: {
+        format: {
+            title: function (d) { return 'Feature ' + data[d].FeatureID + ": " + data[d].Description; },
+        }
+    }
   });
-});
+}
+
+
+// var importeddataset = d3.csv("sampledata/kanodata.csv", function(d) {
+//   return {
+//     featureid: +d.Featureid,
+//     // label: function(){
+//     //     return "Feature " + featureid;
+//     // },
+//     description: d.Description,
+//     satisfaction: +d.Satisfaction,
+//     dissatisfaction: +d.Dissatisfaction
+//   };
+// }, function(error, rows) {
+//   console.log(rows);
+//   var chart = c3.generate({
+//       data: {
+//           json: rows,
+//           keys: {
+//               value: ['satisfaction', 'dissatisfaction']
+//           },
+//           type: 'bar'
+//       },
+//       grid: {
+//           y: {
+//               lines: [{value:0}]
+//           }
+//       },
+//       tooltip: {
+//           format: {
+//               title: function (d) { return 'Feature ' + rows[d].featureid + ": " + rows[d].description; },
+//           }
+//       }
+//   });
+// });
 
 
 // object we have =>
