@@ -61,6 +61,8 @@ function myData(data) {
         keys: {
             value: ['Satisfaction', 'Dissatisfaction']
         },
+        names: {'Satisfaction': 'Impact on Satisfaction',
+                'Dissatisfaction': 'Impact on Dissatisfaction'},
         type: 'bar'
     },
     grid: {
@@ -75,7 +77,7 @@ function myData(data) {
     }
   });
 
-  
+
 }
 
 
